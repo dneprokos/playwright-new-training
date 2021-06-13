@@ -1,0 +1,7 @@
+{
+    "Environment": {
+        "baseUrl": "https://www.saucedemo.com/",
+        "standardUser":"standard_user",
+        "password": "secret_sauce"
+    }
+}

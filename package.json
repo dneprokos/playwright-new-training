@@ -1,0 +1,25 @@
+{
+  "name": "playwright-new-training",
+  "version": "1.0.0",
+  "description": "Playwright practice project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./specs/**/*.spec.js --timeout 10000 -R spec"
+  },
+  "keywords": [
+    "playwright",
+    "tests",
+    "ui"
+  ],
+  "author": "Kostiantyn Teltov",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "*",
+    "chai-string": "*",
+    "mocha": "*",
+    "playwright": "^1.12.2"
+  },
+  "dependencies": {
+    "config": "^3.3.6"
+  }
+}
