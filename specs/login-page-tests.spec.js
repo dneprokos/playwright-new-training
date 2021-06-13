@@ -31,12 +31,28 @@ describe('PLAYWRIGHT - LOGIN PAGE TESTS', () => {
         await loginPage.perfromLoginExpectedSuccesfull(standardUser, password);
     })
 
-    it(`Perform unsuccesfull login`, async() => {
+    it(`Perform unsuccesfull login with Standard User`, async() => {
         //Arrange
         const loginPage = new LoginPage(page);
-        const standardUser = 'fake_user'
+        const standardUser = config.get('Environment.standardUser');
         const password = 'fake_password';
         const expectedErrorText = "Epic sadface: Username and password do not match any user in this service";
+
+        //Act
+        await loginPage.performLogin(standardUser, password);
+
+        //Assert
+        const errorText = await page.innerText('//h3[@data-test]');
+        assert.equal(errorText, expectedErrorText);
+        assert.equal(page.url(), BASE_URL);
+    })
+
+    it(`Perform login with locked_out_user`, async() => {
+        //Arrange
+        const loginPage = new LoginPage(page);
+        const standardUser = config.get('Environment.locked_out_user');
+        const password = config.get('Environment.password');;
+        const expectedErrorText = "Epic sadface: Sorry, this user has been locked out.";
 
         //Act
         await loginPage.performLogin(standardUser, password);
